@@ -1,7 +1,6 @@
 import csv
 
-with open('WGUPS Package File.csv', mode = 'r') as infile:
-    reader = csv.reader(infile)
-    with open('WGUPS Package File.csv', mode = 'w') as outfile:
-        writer = csv.writer(outfile)
-        dict = {rows[0]: rows[1] for rows in reader}
+with open('WGUPS_Package_File.csv', 'r') as csv_file:
+    csv_reader = csv.reader(csv_file)
+    for line in csv_reader:
+        print(line)
