@@ -20,14 +20,16 @@ class Hashtable:
         #which contains the hash function that deterens where the item will go
         bucket_list = self.table[bucket]
         #insert the item at the end of the bucket list
+
+
+        for kv in bucket_list:
+            if kv[0] == key:
+                kv[1] = item
+                return True
+
         key_value = [key, item]
-
-        if bucket_list is None:
-            bucket_list = self.table[bucket].append(key_value)
-            return True
-        else 
-        #bucket_list.append(item)
-
+        bucket_list.append(key_value)
+        return True
         # Searches for an item with matching key in the hash table.
         # Returns the item if found, or None if not found.
 
@@ -40,7 +42,7 @@ class Hashtable:
         if key in bucket_list:
             # find the item's index and return the item that is in the bucket list.
             item_index = bucket_list.index(key)
-            return bucket_list[item_index]
+            return True
         else:
             # the key is not found.
             return None
@@ -64,9 +66,9 @@ print(myHash.table)
 myHash.insert('2', "asdgasg")
 print(myHash.table)
 
-print(myHash.search('Jane Doe'))
+print(myHash.search('2'))
 
-myHash.remove('2')
+myHash.insert('2', '323asdfasf')
 print(myHash.table)
 
 
