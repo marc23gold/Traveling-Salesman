@@ -1,6 +1,7 @@
 #chaining hashtable
 class Hashtable:
     #constructor
+    #O(1) complexity because the bucket size is already set and is a constant
     def __init__(self, bucket_size = 40):
         #use empty list as a container for the buckets
         self.table = []
@@ -9,12 +10,24 @@ class Hashtable:
             self.table.append([])
 
     #Inserts a new item into the hash table.
-    def insert(self, item):
+    def insert(self, key, item):
         #hash function by division
         bucket = hash(item) % len(self.table)
+        #index aka the bucket_list number is assigned from the bucket variable
+        #which contains the hash function that deterens where the item will go
         bucket_list = self.table[bucket]
         #insert the item at the end of the bucket list
         bucket_list.append(item)
+
+
+        for kv in bucket_list:
+            #prints the key value
+            if kv[0] == key:
+                kv[1] = item
+                return True
+        key_value = [key, item]
+        bucket_list.append(key_value)
+        return True
 
         # Searches for an item with matching key in the hash table.
         # Returns the item if found, or None if not found.
