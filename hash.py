@@ -21,13 +21,15 @@ class Hashtable:
         bucket_list = self.table[bucket]
         #insert the item at the end of the bucket list
 
+        key_value = [key, item]
 
-        for kv in bucket_list:
-            if kv[0] == key:
-                kv[1] = item
+        #update key if it is already in the bucket
+        for key_value in bucket_list:
+            if key_value[0] == key:
+                key_value[1] = item
                 return True
 
-        key_value = [key, item]
+
         bucket_list.append(key_value)
         return True
         # Searches for an item with matching key in the hash table.
@@ -38,11 +40,13 @@ class Hashtable:
         bucket = int(key) % len(self.table)
         bucket_list = self.table[bucket]
 
+
+        for key_value in bucket_list:
         # search for the key in the bucket list
-        if key in bucket_list:
+            if key_value[0] == key:
             # find the item's index and return the item that is in the bucket list.
-            item_index = bucket_list.index(key)
-            return True
+                return key_value[1]
+
         else:
             # the key is not found.
             return None
@@ -55,21 +59,12 @@ class Hashtable:
         bucket_list = self.table[bucket]
 
         # remove the item from the bucket list if it is present.
-        if key in bucket_list:
-            bucket_list.remove(key)
+        for key_value in bucket_list:
+            if key_value[0] == key:
+                bucket_list.remove([key_value[0], key_value[1]])
 
 
-myHash = Hashtable()
-myHash.insert('1', "ove")
-print(myHash.table)
 
-myHash.insert('2', "asdgasg")
-print(myHash.table)
-
-print(myHash.search('2'))
-
-myHash.insert('2', '323asdfasf')
-print(myHash.table)
 
 
 
