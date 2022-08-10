@@ -51,12 +51,12 @@ loadPackages('WGUPS_Package_File.csv')
 for i in range(len(packHash.table)+1):
     print("Package: {}".format(packHash.search(i+1)))"""
 
-def loadDistance():
-    with open("WGUPS_Distance_Table.csv", 'r') as csv_file:
+#def loadDistance():
+with open("distance_table.csv", 'r') as csv_file:
         csv_reader = csv.reader(csv_file, delimiter = ',')
         next(csv_reader)
         array = list(csv_reader)
-        return array
+        return (array)
 
 
 
