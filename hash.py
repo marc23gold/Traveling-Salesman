@@ -40,12 +40,11 @@ class Hashtable:
         bucket = int(key) % len(self.table)
         bucket_list = self.table[bucket]
 
-
         for key_value in bucket_list:
         # search for the key in the bucket list
             if key_value[0] == key:
             # find the item's index and return the item that is in the bucket list.
-                return key_value[1]
+                return (key_value[1])
 
         else:
             # the key is not found.
