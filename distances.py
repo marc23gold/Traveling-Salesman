@@ -2,7 +2,7 @@ import csv
 from readcsv import *
 from graph import *
 
-ok = loadDistance()
+ok = loadDistance('distance_table.csv')
 
 vertex = []
 for x in range(27):
@@ -19,6 +19,13 @@ print(ok)
 
 print(g.adjacency_list)
 
+g.add_undirected_edge(vertex[0], vertex[1],float(ok[0][4]))
+g.add_und
+
+print(g.adjacency_list)
+
+
+
 #add the edges
 """def add_edges():
     # outer loop accessing the rows
@@ -31,7 +38,7 @@ print(g.adjacency_list)
             if y == '':
                 break"""
 
-print(g.adjacency_list)
+#print(g.adjacency_list)
 
 
 
