@@ -2,7 +2,7 @@
 class Hashtable:
     #constructor
     #O(1) complexity because the bucket size is already set and is a constant
-    def __init__(self, bucket_size = 40):
+    def __init__(self, bucket_size = 41):
         #use empty list as a container for the buckets
         self.table = []
         #for loop that initalizes all the empty buckets
