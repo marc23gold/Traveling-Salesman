@@ -2,7 +2,8 @@
 class Vertex:
     def __init__(self, label):
         self.label = label
-
+    def __repr__(self):
+        return "vertex({self.label})".format(self=self)
 
 class Graph:
     def __init__(self):
@@ -19,3 +20,6 @@ class Graph:
     def add_undirected_edge(self, vertex_a, vertex_b, weight=1.0):
         self.add_directed_edge(vertex_a, vertex_b, weight)
         self.add_directed_edge(vertex_b, vertex_a, weight)
+
+    def __repr__(self):
+        return "graph({self.adjacency_list},{self.edge_weights})".format(self=self)
