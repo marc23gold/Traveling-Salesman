@@ -1,28 +1,13 @@
 import csv
-from  hash import *
+from hash import *
+from package import *
 
-#package class
-class Package:
-    #constructor
-    #change values later
-    def __init__(self, ID, address, city, state, zip, deadline, mass, notes, status):
-        self.ID = ID
-        self.address = address
-        self.city = city
-        self.state = state
-        self.zip = zip
-        self.deadline = deadline
-        self.mass = mass
-        self.notes = notes
-        self.status = status
-
-    #function that effects how strings will be shown
-    def __str__(self):
-        return "%s, %s, %s, %s, %s, %s, %s, %s, %s" % (self.ID, self.address, self.city, self.state, self.zip, self.deadline, self.mass, self.notes, self.status)
-
-#Hashtable instance
+#Hashtable instance, created a hashtable called packHash
+#packHash will store all the packages and their information
 packHash = Hashtable()
 
+
+#populates packHash with data from the package csv
 def loadPackages(filename):
     with open(filename, 'r') as packages:
         packageData = csv.reader(packages, delimiter = ',')
@@ -47,9 +32,10 @@ def loadPackages(filename):
 
 loadPackages('WGUPS_Package_File.csv')
 
-"""print("Packages in HashTable: \n")
-for i in range(len(packHash.table)+1):
-    print("Package: {}".format(packHash.search(i+1)))"""
+def showPackages():
+    print("Packages in HashTable: \n")
+    for i in range(len(packHash.table)+1):
+        print("Package: {}".format(packHash.search(i+1)))
 
 def loadDistance(filename):
     with open(filename, 'r') as csv_file:
@@ -58,7 +44,18 @@ def loadDistance(filename):
         array = list(csv_reader)
         return array
 
+#gets nested list of addresses from address.csv
+def loadAddresses(filename):
+    with open(filename, 'r') as csv_file:
+        csv_reader = csv.reader(csv_file, delimiter=',')
+        address = list(csv_reader)
+        return address
 
+
+loadAddresses('address.csv')
+
+
+#dictionay k = vertex v = address
 
 
 

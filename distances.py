@@ -1,35 +1,70 @@
+#importing csv, read csv file, and the graph class
 import csv
 from readcsv import *
 from graph import *
 
+"""calling the loadDistance function from readcsv with the argument distance_table
+and assigning the return value to the ok variable. This will get the two dimensional array
+that will make the adjacency matrix"""
 ok = loadDistance('distance_table.csv')
 
+addressok =  loadAddresses('address.csv')
+
+def addressIndex(address):
+    for i,x in enumerate(addressok):
+        # print(address, x[1])
+        if address in x[1]:
+            return i
+    print(address)
+def getDistanceTo(address1, address2):
+    return float(ok[addressIndex(address1)][addressIndex(address2)])
+"making an array that will contain the vertexes of the graph "
 vertex = []
-for x in range(27):
+"""for loop that will create and add an instance of the Vertex class at each index
+in the array resulting in 27 vertexes that will be called using vertex[x] """
+#O(N)
+for x in range(len(ok)):
     vertex.append(Vertex(x))
 
 #initialized an instance of the graph class
 g = Graph()
 
-#added the vertex
-for x in range(27):
+#O(N)
+#added the vertex to the graph class
+for x in range(len(ok)):
     g.add_vertex(vertex[x])
 
-#print(ok) test
 
-#print(g.adjacency_list)
+
+
 #O(N^2)
 def create_graph():
     for x in range(len(ok)):
         for y in range(len(ok)):
-            right = g.add_undirected_edge(vertex[x], vertex[y],float(ok[x][y]))
-    return right
+            graph = g.add_undirected_edge(vertex[x], vertex[y],float(ok[x][y]))
+    return graph
 #note to self: you're going to call the edge weights using the vertex indicies like shown below 
 create_graph()
-#print(g.adjacency_list)
-#print(g.edge_weights)
-#print(g.adjacency_list[vertex[0]])
-#print(g.edge_weights[(vertex[2], vertex[4])])
+
+#functions to test code
+def test(a,b,c):
+    a = int(a)
+    b = int(b)
+    c = int(c)
+    print(g.adjacency_list[vertex[a]])
+    print(g.edge_weights[(vertex[b], vertex[c])])
+
+
+#functions to test code
+def test2():
+    print(g.adjacency_list)
+    print(g.edge_weights)
+
+#test(5,18,2)
+
+
+
+
 
 
 
