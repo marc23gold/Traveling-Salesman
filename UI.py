@@ -8,6 +8,9 @@ from truck import *
             #statements to print
         else:
             #print all state ments """
+
 for x in range(1,41):
     g =packHash.search(x)
     print(g)
+
+print()

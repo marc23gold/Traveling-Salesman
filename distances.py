@@ -6,9 +6,9 @@ from graph import *
 """calling the loadDistance function from readcsv with the argument distance_table
 and assigning the return value to the ok variable. This will get the two dimensional array
 that will make the adjacency matrix"""
-ok = loadDistance('distance_table.csv')
+distances = loadDistance('distance_table.csv')
 
-addressok =  loadAddresses('address.csv')
+addressok = loadAddresses('address.csv')
 
 def addressIndex(address):
     for i,x in enumerate(addressok):
@@ -17,21 +17,27 @@ def addressIndex(address):
             return i
     print(address)
 def getDistanceTo(address1, address2):
-    return float(ok[addressIndex(address1)][addressIndex(address2)])
-"making an array that will contain the vertexes of the graph "
+    return float(distances[addressIndex(address1)][addressIndex(address2)])
+
 vertex = []
-"""for loop that will create and add an instance of the Vertex class at each index
-in the array resulting in 27 vertexes that will be called using vertex[x] """
-#O(N)
-for x in range(len(ok)):
-    vertex.append(Vertex(x))
+def vertexInGraph():
+    "making an array that will contain the vertexes of the graph "
+
+    """for loop that will create and add an instance of the Vertex class at each index
+    in the array resulting in 27 vertexes that will be called using vertex[x] """
+    #O(N)
+    for x in range(len(distances)):
+        d = vertex.append(Vertex(x))
+    return  d
+
+vertexInGraph()
 
 #initialized an instance of the graph class
 g = Graph()
 
 #O(N)
 #added the vertex to the graph class
-for x in range(len(ok)):
+for x in range(len(distances)):
     g.add_vertex(vertex[x])
 
 
@@ -39,9 +45,9 @@ for x in range(len(ok)):
 
 #O(N^2)
 def create_graph():
-    for x in range(len(ok)):
-        for y in range(len(ok)):
-            graph = g.add_undirected_edge(vertex[x], vertex[y],float(ok[x][y]))
+    for x in range(len(distances)):
+        for y in range(len(distances)):
+            graph = g.add_undirected_edge(vertex[x], vertex[y],float(distances[x][y]))
     return graph
 #note to self: you're going to call the edge weights using the vertex indicies like shown below 
 create_graph()
