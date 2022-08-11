@@ -27,9 +27,9 @@ def create_graph():
 #note to self: you're going to call the edge weights using the vertex indicies like shown below 
 create_graph()
 #print(g.adjacency_list)
-print(g.edge_weights)
+#print(g.edge_weights)
 #print(g.adjacency_list[vertex[0]])
-print(g.edge_weights[(vertex[2], vertex[4])])
+#print(g.edge_weights[(vertex[2], vertex[4])])
 
 
 
