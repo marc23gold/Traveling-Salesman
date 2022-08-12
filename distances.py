@@ -16,6 +16,7 @@ def addressIndex(address):
         if address in x[1]:
             return i
     print(address)
+
 def getDistanceTo(address1, address2):
     return float(distances[addressIndex(address1)][addressIndex(address2)])
 

@@ -1,5 +1,7 @@
 #Basic UI call function from command line
 #basic imports
+import datetime
+
 from readcsv import *
 from truck import *
 
@@ -9,8 +11,18 @@ from truck import *
         else:
             #print all state ments """
 
+userTime = datetime.timedelta(hours = 11)
 for x in range(1,41):
-    g =packHash.search(x)
-    print(g)
+    allPacks =packHash.search(x)
+    if allPacks.deliveryTime < userTime:
+        allPacks.status = "Delivered"
+    elif  userTime > allPacks.departureTime:
+        allPacks.status = "In Route"
+    else:
+        allPacks.status = "At the Hub"
 
-print()
+    print(allPacks)
+
+total = (truck1.mileage + truck2.mileage + truck3.mileage)
+print(total)
+
