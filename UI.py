@@ -12,11 +12,11 @@ from truck import *
             #print all state ments """
 
 userTime = datetime.timedelta(hours = 11)
-for x in range(1, 41):
-    allPacks = packHash.search(x)
+for x in range(1,41):
+    allPacks =packHash.search(x)
     if allPacks.deliveryTime < userTime:
         allPacks.status = "Delivered"
-    elif userTime > allPacks.departureTime:
+    elif  userTime > allPacks.departureTime:
         allPacks.status = "In Route"
     else:
         allPacks.status = "At the Hub"
@@ -25,4 +25,6 @@ for x in range(1, 41):
 
 total = (truck1.mileage + truck2.mileage + truck3.mileage)
 print(total)
+
+
 
