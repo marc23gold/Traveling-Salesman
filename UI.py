@@ -13,7 +13,7 @@ from truck import *
 
 userTime = datetime.timedelta(hours = 11)
 for x in range(1,41):
-    allPacks =packHash.search(x)
+    allPacks = packHash.search(x)
     if allPacks.deliveryTime < userTime:
         allPacks.status = "Delivered"
     elif  userTime > allPacks.departureTime:
