@@ -16,7 +16,7 @@ for x in range(1, 41):
     allPacks = packHash.search(x)
     if allPacks.deliveryTime < userTime:
         allPacks.status = "Delivered"
-    elif  userTime > allPacks.departureTime:
+    elif userTime > allPacks.departureTime:
         allPacks.status = "In Route"
     else:
         allPacks.status = "At the Hub"
