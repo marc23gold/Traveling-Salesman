@@ -7,7 +7,7 @@ and assigning the return value to the ok variable. This will get the two dimensi
 that will make the adjacency matrix"""
 distances = loadDistance('distance_table.csv')
 
-addressok = loadAddresses('address.csv')
+addressok = loadAddresses('address1.csv')
 
 def addressIndex(address):
     for i,x in enumerate(addressok):
