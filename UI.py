@@ -12,7 +12,7 @@ from truck import *
             #print all state ments """
 
 userTime = datetime.timedelta(hours = 11)
-for x in range(1,41):
+for x in range(1, 41):
     allPacks = packHash.search(x)
     if allPacks.deliveryTime < userTime:
         allPacks.status = "Delivered"
