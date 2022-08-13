@@ -1,46 +1,69 @@
 from distances import *
+from package import *
 from readcsv import *
 from truck import *
 
+#vectorToAddressDictionary = {
+    # 0: 'HUB',
+    # 1:
+    # 2: '1330 2100 S'
+    # 3:
+    # 4:
+    # 5: '195 W Oakland Ave',
+    # 6:
+    # 7:
+    # 8: '233 Canyon Rd'
+    # 9: '2530 S 500 E'
+    # 10:
+    # 11:
+    # 12:
+    # 13: '3060 Lester St'
+    # 14:
+    # 15:
+    # 16:
+    # 17:
+    # 18: '380 W 2880 S'
+    # 19: '410 S State St'
+    # 20:
+    # 21:
+    # 22:
+    # 23:
+    # 24:
+    # 25:
+    # 26:
+#}
+r = packHash.search(9)
+rrr = r.address
+print(rrr)
 
-# Greedy Algorithm: Min Expenses => Max Profits
-def greedyAlgorithmMinExpenses(truck):
-    total = truck.packages
-    c25dollar = 0
-    c10dollar = 0
-    c5dollar = 0
-    c1dollar = 0
-    while (budget >= 25):
-        if c25dollar > 3:  # why 3? 0,1,2,3 will not break so 4 times.
-            break
-        c25dollar += 1
-        budget = budget - 25
-    while (budget >= 10):
-        c10dollar += 1
-        budget = budget - 10
-    while (budget >= 5):
-        c5dollar += 1
-        budget = budget - 5
-    while (budget > 0):
-        if c1dollar > 3:
-            break
-        c1dollar += 1
-        budget = budget - 1
+print(vertexToAddressDictionary[3])
 
-    cDVDs = c25dollar + c10dollar + c5dollar + c1dollar
-
-    # expense calculation
-    eDVDs = 1.00 * cDVDs  # Material cost of DVD: $1.00
-    eLabor = 12.00 * (math.ceil(cDVDs / 10))  # Labor is $12.00 for every 10 DVDs, $24.00 for 11 DVDs
-    eShipping = 0.50 * cDVDs  # Shipping cost is $0.50 per DVD
-    eTotal = eDVDs + eLabor + eShipping
-    profit = total - eTotal
-
-    print("${:.2f}-Budget, {}-DVDs, ${:.2f}-Expense, ${:.2f}-Profit ==>".format(total, cDVDs, eTotal, profit))
-    print(" {} x 25 dollar movie = ${:.2f}".format(c25dollar, c25dollar * 25.00))
-    print(" {} x 10 dollar movie = ${:.2f}".format(c10dollar, c10dollar * 10.00))
-    print(" {} x 5  dollar movie = ${:.2f}".format(c5dollar, c5dollar * 5.00))
-    print(" {} x 1  dollar movie = ${:.2f}".format(c1dollar, c1dollar * 1.00))
+def algo(truck) :
+    #this is the start address that will be passed into the getDistance function
+    startingAddress = 'HUB' or 0
+    #creating new list for sorted passed in list from truck.packages to be stored
+    newlist = []
+    for x in truck.packages:
+        newlist.append()
+        #for every package id that is searched from the list of the current truck.package list
+        #it will be stored into the variable package so that it can be used later
+        package = packHash.search(x)
+        #this is getting the name of the address of the package being stored in the variable packageString
+        packageString = package.address
+        """next line takes the package string and gets the vector index using some dictionary method"""
+        """the vector index is used as the represenation of the address"""
+        """next line takes the vector index and passes it into a block of code or function that gets the next package with the min distance"""
+        """next line puts that package into the truck.package list"""
+        "return truck.package list"
+        "done"
+        #gets information from package with current package
+        packInfo = packHash.search(x)
+        #I need to get the package address
+        #if #current package
+        return # new truck package list
 
 
-print("\nGreedy Algorithm: Min Expenses => Max Profits")
+
+
+
+#I know need to create a dictionary that corresponds the address with a number

@@ -25,28 +25,24 @@ truck3 = Truck(3, datetime.timedelta(hours=10), 'HUB', 0.0, [6,25,28,35,36,37,38
 #truck?.packages
 #def checkPackages(packagelist):
 
-def truckSortPackage(truck):
-#Function to return the distance between two addresses
-#a and b in the parameter represent the vertex numbers
-#and will be passed into the function to find the distance
-    def getDistance(a, b):
-        distance = g.edge_weights[(vertex[a], vertex[b])]
-        return distance
+def getDistance(a, b):
+    distance = g.edge_weights[(vertex[a], vertex[b])]
+    return distance
 
     #function to find min distance/address:
     """"inputs need to be the fromAddress or the address the truck is currently at
     to the address that is listed on the packages next in the list"""
-    def minDistanceFrom(fromAddress, toAddress):
-        addresslist = []
-        for x in range(27):
-            addresslist.append(getDistance(int(fromAddress),int(x)))
-        #deleting this specific index because it would be 0.0 and refers to the
-        #fromAddress going to the fromAddress
-        del addresslist[fromAddress]
-        ok = min(addresslist)
-        ad = addresslist.index(ok)
-        alright = [ad+1, ok]
-        return alright
+def minDistanceFrom(fromAddress, toAddress):
+    addresslist = []
+    for x in range(27):
+        addresslist.append(getDistance(int(fromAddress),int(x)))
+    #deleting this specific index because it would be 0.0 and refers to the
+    #fromAddress going to the fromAddress
+    del addresslist[fromAddress]
+    ok = min(addresslist)
+    ad = addresslist.index(ok)
+    alright = [ad+1, ok]
+    return alright
 
 
 #(minDistanceFrom(5))
@@ -75,7 +71,7 @@ def truckDeliverPakcages(truck):
         time_obj could be cumulated to keep track of time"""
 
 
-truckSortPackage(truck1)
+#truckSortPackage(truck1)
 
 #truck one and two can go simutaneously
 truckDeliverPakcages(truck1)

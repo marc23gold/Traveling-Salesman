@@ -1,5 +1,4 @@
 #importing csv, read csv file, and the graph class
-import csv
 from readcsv import *
 from graph import *
 
@@ -12,15 +11,18 @@ addressok = loadAddresses('address.csv')
 
 def addressIndex(address):
     for i,x in enumerate(addressok):
-        # print(address, x[1])
+        print(address, x[1])
         if address in x[1]:
             return i
-    print(address)
+        #print(address)
 
-def getDistanceTo(address1, address2):
+ def getDistanceTo(address1, address2):
     return float(distances[addressIndex(address1)][addressIndex(address2)])
 
 vertex = []
+vertexAddressMap = {}
+
+
 def vertexInGraph():
     "making an array that will contain the vertexes of the graph "
 
