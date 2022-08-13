@@ -4,8 +4,77 @@ from readcsv import *
 from truck import *
 
 addressList = loadAddresses('address.csv')
+#there are 27 addresses being put into the list
+#print(len(addressList))
 #print(addressList)
 
+#dictionary that will have index as the key and address as the thing
+vertexToAddressDictionary = {}
+
+#assigns a key with value of integer zero to equal HUB
+vertexToAddressDictionary[0] = addressList[0][1]
+for x in range(1,27):
+        vertexToAddressDictionary[x] = addressList[x][1]
+
+addressToVertexDictionary = {}
+addressToVertexDictionary[addressList[0][1]] = 0
+for x in range(27):
+        addressToVertexDictionary[addressList[x][1]] = x
+#print(addressToVertexDictionary)
+
+
+package = packHash.search(20)
+packageString = package.address
+print(addressToVertexDictionary[packageString])
+
+#print(vertexToAddressDictionary)
+#key_list = list(vertexToAddressDictionary)
+#val_list = list()
+
+def algo (truck):
+        newarray = []
+        #i is the index of the list packages x is the package item
+        #so for package items in truck.packages pass through the list of packages
+        for i,x in enumerate(truck.packages):
+                #this is getting the package values from the packHash hashtable using passing in the value x from the package list from the truck
+                package = packHash.search(x)
+                #getting the address string from the package object
+                packageString = package.address
+                #converts the packageString into an index the getDistance function will understand
+                vertexId2 = addressToVertexDictionary[packageString]
+                #setting the initial from value to the HUB will be found
+                if i == 0:
+                        #assigning the from value to be HUB
+                        vertexId1 = addressToVertexDictionary['HUB']
+                        min = 1000
+                        #
+                        for y in range(len(truck.packages)):
+
+                                dist = getDistance(vertexId1, vertexId2)
+                                if dist < min:
+                                        min = dist
+                                        nextFromVertex = vertexId2
+                                        address = vertexToAddressDictionary[vertexId2]
+                                        newarray.append(address)
+                        return newarray
+
+                else:
+                         min = 1000
+                         #
+                         for y in range(len(truck.packages)):
+
+                                 dist = getDistance(newarray[i-1], vertexId2)
+                                 if dist < min:
+                                         min = dist
+                                         nextFromVertex = vertexId2
+                                         address = vertexToAddressDictionary[vertexId2]
+                                         newarray.append(address)
+                #         #sets the from value to the previous address
+                #         vertexId1 = truck.packages[i-1]
+                # distance = getDistance(vertexId1, vertexId2)
+                # newarray.append(distance)
+
+print(algo(truck1))
 
 
 
@@ -14,7 +83,12 @@ addressList = loadAddresses('address.csv')
 
 
 
-#
+
+
+
+
+
+
 # #vectorToAddressDictionary = {
 #     # 0: 'HUB',
 #     # 1:
