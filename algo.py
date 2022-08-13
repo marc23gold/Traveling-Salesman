@@ -1,7 +1,19 @@
-# from distances import *
-# from package import *
-# from readcsv import *
-# from truck import *
+from distances import *
+from package import *
+from readcsv import *
+from truck import *
+
+addressList = loadAddresses('address.csv')
+#print(addressList)
+
+
+
+
+
+
+
+
+
 #
 # #vectorToAddressDictionary = {
 #     # 0: 'HUB',
