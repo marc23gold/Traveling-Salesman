@@ -56,19 +56,24 @@ def algo (truck):
                                         nextFromVertex = vertexId2
                                         address = vertexToAddressDictionary[vertexId2]
                                         newarray.append(address)
-                        return newarray
+
 
                 else:
                          min = 1000
                          #
                          for y in range(len(truck.packages)):
 
-                                 dist = getDistance(newarray[i-1], vertexId2)
-                                 if dist < min:
+                                 dist = getDistance(nextFromVertex, vertexId2)
+                                 if dist == 0 or 0.0:
+                                         nextFromVertex = vertexId2
+                                         address = vertexToAddressDictionary[nextFromVertex]
+                                         newarray.append(address)
+                                 elif dist < min:
                                          min = dist
                                          nextFromVertex = vertexId2
-                                         address = vertexToAddressDictionary[vertexId2]
+                                         address = vertexToAddressDictionary[nextFromVertex]
                                          newarray.append(address)
+                         return newarray
                 #         #sets the from value to the previous address
                 #         vertexId1 = truck.packages[i-1]
                 # distance = getDistance(vertexId1, vertexId2)
