@@ -4,20 +4,21 @@ from readcsv import *
 
 
 addressList = loadAddresses('address.csv')
-#there are 27 addresses being put into the list
-#print(len(addressList))
-#print(addressList)
 
 #dictionary that will have index as the key and address as the thing
 vertexToAddressDictionary = {}
 
 #assigns a key with value of integer zero to equal HUB
 vertexToAddressDictionary[0] = addressList[0][1]
+
+#O(1)
 for x in range(1,27):
         vertexToAddressDictionary[x] = addressList[x][1]
 
 addressToVertexDictionary = {}
 addressToVertexDictionary[addressList[0][1]] = 0
+
+#O(1)
 for x in range(27):
         addressToVertexDictionary[addressList[x][1]] = x
 #print(addressToVertexDictionary)
@@ -26,10 +27,6 @@ for x in range(27):
 package = packHash.search(20)
 packageString = package.address
 #print(addressToVertexDictionary[packageString])
-
-#print(vertexToAddressDictionary)
-#key_list = list(vertexToAddressDictionary)
-#val_list = list()
 
 def algo (truck):
         #this array will hold the sorted address values that will later be turned back into the package number
