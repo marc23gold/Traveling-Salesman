@@ -10,11 +10,13 @@ from truck import *
             #statements to print
         else:
             #print all state ments """
-
-userTime = datetime.timedelta(hours = 11)
+user = input("Please put in the time you want in the format: ")
+userTime = datetime.timedelta(hours = int(user))
 for x in range(1,41):
     allPacks =packHash.search(x)
-    if allPacks.deliveryTime < userTime:
+    if allPacks.deliveryTime == None:
+        pass
+    elif allPacks.deliveryTime < userTime:
         allPacks.status = "Delivered"
     elif  userTime > allPacks.departureTime:
         allPacks.status = "In Route"
@@ -24,7 +26,8 @@ for x in range(1,41):
     print(allPacks)
 
 total = (truck1.mileage + truck2.mileage + truck3.mileage)
-print(total)
+print("\nThe total milage is: ",total)
+
 
 
 

@@ -1,5 +1,6 @@
 import datetime
 from distances import *
+from algo import *
 
 class Truck:
     def __init__(self,truckId, departure, address, mileage, packages):
@@ -12,10 +13,11 @@ class Truck:
     def __str__(self):
         return "%s, %s, %s, %s, %s" % (self.truckId, self.departure, self.address, self.mileage, self.packages)
 
-truck1 = Truck(1, datetime.timedelta(hours=8), 'HUB', 0.0, [14,15,16,17,19,1,2,4,13,5,7,8,10,11,12])
-truck2 = Truck(2, datetime.timedelta(hours=8), 'HUB', 0.0, [3,9,18,20,21,22,23,24,27,29,30,31,32,33])
-#after truck 1 or two
-truck3 = Truck(3, datetime.timedelta(hours=10), 'HUB', 0.0, [6,25,28,35,36,37,38,39,40,26,34])
+truck1 = Truck(1, datetime.timedelta(hours=8), 'HUB', 0.0, [14,15,16,34,17,19,1,4,13,5,7,8,10,11,12])
+truck2 = Truck(2, datetime.timedelta(hours=8), 'HUB', 0.0, [3,18,20,21,22,23,24,27,29,30,31,32,33])
+truck3 = Truck(3, datetime.timedelta(hours=9, minutes = 17), 'HUB', 0.0, [6,25,28,35,36,37,38,39,40,26,2,9])
+
+
 
 #checks packages from the array and gives what is the next destination
 
@@ -76,13 +78,11 @@ def truckDeliverPakcages(truck):
 
 
 #truckSortPackage(truck1)
+truck1.packages = algo(truck1)
+truck2.packages = algo(truck2)
+truck3.packages = algo(truck3)
 
-#truck one and two can go simutaneously
+#delivering packages
 truckDeliverPakcages(truck1)
 truckDeliverPakcages(truck2)
-#truck three goes after after truck one or truck two gets back
-"""input: last time after either truck one or truck two gets back to the pub
-    output: the call back of truck3
-    method: need to sift the departure time of truck 3 to be the time it takes for
-    truck one or two to get back"""
 truckDeliverPakcages(truck3)

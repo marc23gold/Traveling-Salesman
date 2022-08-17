@@ -1,6 +1,7 @@
 #package class
 class Package:
     #constructor
+    #O(1)
     #change values later
     def __init__(self, ID, address, city, state, zip, deadline, mass, notes, status):
         self.ID = ID
@@ -14,5 +15,6 @@ class Package:
         self.status = status
         self.deliveryTime = None
     #function that effects how strings will be shown
+    #O(1)
     def __str__(self):
         return "%s, %s, %s, %s, %s, %s, %s, %s, %s, %s" % (self.ID, self.address, self.city, self.state, self.zip, self.deadline, self.mass, self.notes, self.status, self.deliveryTime)

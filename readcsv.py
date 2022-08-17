@@ -8,6 +8,7 @@ packHash = Hashtable()
 
 
 #populates packHash with data from the package csv
+#O(N)
 def loadPackages(filename):
     with open(filename, 'r') as packages:
         packageData = csv.reader(packages, delimiter = ',')
@@ -32,11 +33,15 @@ def loadPackages(filename):
 
 loadPackages('WGUPS_Package_File.csv')
 
+#O(N)
+
 def showPackages():
     print("Packages in HashTable: \n")
     for i in range(len(packHash.table)+1):
         print("Package: {}".format(packHash.search(i+1)))
 
+#O(N)
+# Function gets data from a csv file writes to a list and returns the list
 def loadDistance(filename):
     with open(filename, 'r') as csv_file:
         csv_reader = csv.reader(csv_file, delimiter = ',')
@@ -45,6 +50,7 @@ def loadDistance(filename):
         return array
 
 #gets nested list of addresses from address.csv
+#O(N)
 def loadAddresses(filename):
     with open(filename, 'r') as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')

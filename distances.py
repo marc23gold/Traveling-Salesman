@@ -10,9 +10,13 @@ distances = loadDistance('distance_table.csv')
 
 addressok = loadAddresses('address1.csv')
 
+#O(N)
+#gets the address index
 def addressIndex(address):
+    #searches through the number of rows in addressok
     for i,x in enumerate(addressok):
         # print(address, x[1])
+        #if the address is in index number one of the address list
         if address in x[1]:
             return i
     print(address)

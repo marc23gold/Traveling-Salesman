@@ -1,7 +1,7 @@
 from distances import *
 from package import *
 from readcsv import *
-from truck import *
+
 
 addressList = loadAddresses('address.csv')
 #there are 27 addresses being put into the list
@@ -25,61 +25,109 @@ for x in range(27):
 
 package = packHash.search(20)
 packageString = package.address
-print(addressToVertexDictionary[packageString])
+#print(addressToVertexDictionary[packageString])
 
 #print(vertexToAddressDictionary)
 #key_list = list(vertexToAddressDictionary)
 #val_list = list()
 
 def algo (truck):
+        #this array will hold the sorted address values that will later be turned back into the package number
         newarray = []
+        nextToAddress = truck.address
         #i is the index of the list packages x is the package item
         #so for package items in truck.packages pass through the list of packages
         for i,x in enumerate(truck.packages):
-                #this is getting the package values from the packHash hashtable using passing in the value x from the package list from the truck
-                package = packHash.search(x)
-                #getting the address string from the package object
-                packageString = package.address
-                #converts the packageString into an index the getDistance function will understand
-                vertexId2 = addressToVertexDictionary[packageString]
-                #setting the initial from value to the HUB will be found
-                if i == 0:
-                        #assigning the from value to be HUB
-                        vertexId1 = addressToVertexDictionary['HUB']
+
+
+                        #setting the minimum value to be a large number
                         min = 1000
-                        #
-                        for y in range(len(truck.packages)):
+                        nextFromAddress = None
+                        nextBestAddress = None
+                        #loop that passes through the truck array till a minimum value is found
+                        for packages in truck.packages:
+                                """calling the getDistance in truck to get the distance between the two vertexes and
+                                #assigning it to dist"""
+                                if packages in newarray:
+                                        continue
 
-                                dist = getDistance(vertexId1, vertexId2)
-                                if dist < min:
+                                package = packHash.search(packages)
+
+
+                                dist = getDistanceTo(nextToAddress, package.address)
+                                """if the variable dist is less than the minimum which will be continously reassigned to 
+                                the lowest value distance value found in the list then assign the vertexID from the dist
+                                to outside dist"""
+                                n = sum([1 for p in truck.packages if packHash.search(p).deadline != "EOD" and p not in newarray])
+                                if n and package.deadline == "EOD":
+                                    continue
+                                if dist < min :
                                         min = dist
-                                        nextFromVertex = vertexId2
-                                        address = vertexToAddressDictionary[vertexId2]
-                                        newarray.append(address)
+                                        nextFromAddress = packages
+                                        nextBestAddress = package.address
+
+                        newarray.append(nextFromAddress)
+                        nextToAddress = nextBestAddress
+        return newarray
 
 
-                else:
-                         min = 1000
-                         #
-                         for y in range(len(truck.packages)):
+                # else:
+                #         min = 1000
+                #          findsecondmin = []
+                #          for packages in range(len(truck.packages)):
+                #                 dist = getDistance(nextFromVertex, vertexId2)
+                #                 #if dist == 0 or 0.0:
+                #                         # #find the second minimum value
+                #                         # # this adjacencyMatrix will be used to get the second min value
+                #                         # adjacencyMatrix = loadDistance('distance_table.csv')
+                #                         # for row in adjacencyMatrix:
+                #                         #         row.sort()
+                #                         # #print(len(adjacencyMatrix))
+                #                         # #print(adjacencyMatrix)
+                #                         # secondMinString = adjacencyMatrix[vertexId2][1]
+                #                         #
+                #                         # min = float(secondMinString)
+                #                         # nextFromVertex = vertexId2
+                #                         # address = vertexToAddressDictionary[nextFromVertex]
+                #                         # newarray.append([address, min])
+                #                         # return newarray
+                #                 #         # min = dist
+                #                 #          # findsecondmin.append(min)
+                #                 #         currentIndex = i
+                #                 #         nextIndex = currentIndex + 1
+                #                 #         nextFromVertex = truck.packages[nextIndex]
+                #                 #         address = vertexToAddressDictionary[vertexId2]
+                #                 #         newarray.append(address)
+                #                 #          #try just moving to the next item in the list
+                #
+                #                 if dist < min:
+                #                         min = dist
+                #                         nextFromVertex = vertexId2
+                #                         address = vertexToAddressDictionary[nextFromVertex]
+                #         newarray.append([address, min])
+                #         return newarray
+                # #         #sets the from value to the previous address
+                # #         vertexId1 = truck.packages[i-1]
+                # # distance = getDistance(vertexId1, vertexId2)
+                # # newarray.append(distance)
 
-                                 dist = getDistance(nextFromVertex, vertexId2)
-                                 if dist == 0 or 0.0:
-                                         nextFromVertex = vertexId2
-                                         address = vertexToAddressDictionary[nextFromVertex]
-                                         newarray.append(address)
-                                 elif dist < min:
-                                         min = dist
-                                         nextFromVertex = vertexId2
-                                         address = vertexToAddressDictionary[nextFromVertex]
-                                         newarray.append(address)
-                         return newarray
-                #         #sets the from value to the previous address
-                #         vertexId1 = truck.packages[i-1]
-                # distance = getDistance(vertexId1, vertexId2)
-                # newarray.append(distance)
 
-print(algo(truck1))
+
+
+
+#finding the second minimum value for the newly sorted list
+
+#this gets the index of the secnd mimum value to pass to the vertex
+#adjacencyMatrix2 = loadDistance('distance_table.csv')
+#econdMinIndex = adjacencyMatrix2.index()
+
+
+
+
+
+
+
+
 
 
 

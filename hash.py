@@ -11,6 +11,7 @@ class Hashtable:
             self.table.append([])
 
     #Inserts a new item into the hash table.
+    #O(N)
     def insert(self, key, item):
         #hash function by division
         #bucket is being used as the index number for the table that contains
@@ -35,6 +36,7 @@ class Hashtable:
         # Searches for an item with matching key in the hash table.
         # Returns the item if found, or None if not found.
 
+    #O(N)
     def search(self, key):
         # get the bucket list where this key would be.
         bucket = int(key) % len(self.table)
@@ -52,6 +54,7 @@ class Hashtable:
 
         # Removes an item with matching key from the hash table.
 
+    #O(N)
     def remove(self, key):
         # get the bucket list where this item will be removed from.
         bucket = int(key) % len(self.table)
