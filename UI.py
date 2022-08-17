@@ -10,10 +10,11 @@ from truck import *
             #statements to print
         else:
             #print all state ments """
-user = input("Please put in the time you want in the format: ")
-userTime = datetime.timedelta(hours = int(user))
+user = input("Please put in the hour you want: ")
+userMinutes = input("Please put in the minute you want: ")
+userTime = datetime.timedelta(hours = int(user), minutes=int(userMinutes))
 for x in range(1,41):
-    allPacks =packHash.search(x)
+    allPacks = packHash.search(x)
     if allPacks.deliveryTime == None:
         pass
     elif allPacks.deliveryTime < userTime:
