@@ -5,11 +5,6 @@ import datetime
 from readcsv import *
 from truck import *
 
-"""def UI(#whatever, whatever):
-        if #condition on whether to print one statement or everyithg:
-            #statements to print
-        else:
-            #print all state ments """
 user = input("Please put in the hour you want: ")
 userMinutes = input("Please put in the minute you want: ")
 userTime = datetime.timedelta(hours = int(user), minutes=int(userMinutes))
