@@ -2,6 +2,7 @@ import datetime
 from distances import *
 from algo import *
 
+#creating the truck class
 class Truck:
     def __init__(self,truckId, departure, address, mileage, packages):
         self.truckId = truckId
@@ -13,6 +14,7 @@ class Truck:
     def __str__(self):
         return "%s, %s, %s, %s, %s" % (self.truckId, self.departure, self.address, self.mileage, self.packages)
 
+#creating instances of trucks 1 two and three
 truck1 = Truck(1, datetime.timedelta(hours=8), 'HUB', 0.0, [14,15,16,34,17,19,1,4,13,5,7,8,10,11,12])
 truck2 = Truck(2, datetime.timedelta(hours=8), 'HUB', 0.0, [3,18,20,21,22,23,24,27,29,30,31,32,33])
 truck3 = Truck(3, datetime.timedelta(hours=9, minutes = 17), 'HUB', 0.0, [6,25,28,35,36,37,38,39,40,26,2,9])

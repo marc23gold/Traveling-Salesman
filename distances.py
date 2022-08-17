@@ -16,12 +16,14 @@ def addressIndex(address):
     #searches through the number of rows in addressok
     for i,x in enumerate(addressok):
         # print(address, x[1])
-        #if the address is in index number one of the address list
+        #if the address string that is being passed in is in the second column of the x row return the index of the x row
         if address in x[1]:
             return i
     print(address)
 
+#O(N)
 def getDistanceTo(address1, address2):
+    #return the the float of the index of distance
     return float(distances[addressIndex(address1)][addressIndex(address2)])
 
 vertex = []

@@ -61,7 +61,7 @@ def algo (truck):
                                 n = sum([1 for p in truck.packages if packHash.search(p).deadline != "EOD" and p not in newarray])
                                 if n and package.deadline == "EOD":
                                     continue
-                                if dist < min :
+                                if dist < min:
                                         min = dist
                                         nextFromAddress = packages
                                         nextBestAddress = package.address
