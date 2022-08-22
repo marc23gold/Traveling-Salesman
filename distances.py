@@ -1,16 +1,15 @@
-#importing csv, read csv file, and the graph class
 import csv
 from readcsv import *
 from graph import *
 
 """calling the loadDistance function from readcsv with the argument distance_table
-and assigning the return value to the ok variable. This will get the two dimensional array
+and assigning the return value to the distances variable. This will get the two dimensional array
 that will make the adjacency matrix"""
 distances = loadDistance('distance_table.csv')
 
 addressok = loadAddresses('address1.csv')
 
-#O(N)
+#O(N) for both space and time complexity
 #gets the address index
 def addressIndex(address):
     #searches through the number of rows in addressok
@@ -21,12 +20,13 @@ def addressIndex(address):
             return i
     print(address)
 
-#O(N)
+#O(1)
 def getDistanceTo(address1, address2):
     #return the the float of the index of distance
     return float(distances[addressIndex(address1)][addressIndex(address2)])
 
 vertex = []
+#O(N)
 def vertexInGraph():
     "making an array that will contain the vertexes of the graph "
 

@@ -1,7 +1,8 @@
-#chaining hashtable
+#chaining hashtable class
 class Hashtable:
     #constructor
-    #O(1) complexity because the bucket size is already set and is a constant
+    #O(1) time complexity because the bucket size is already set and is a constant
+    #Space complexity: O(1)
     def __init__(self, bucket_size = 41):
         #use empty list as a container for the buckets
         self.table = []
@@ -11,16 +12,17 @@ class Hashtable:
             self.table.append([])
 
     #Inserts a new item into the hash table.
-    #O(N)
+    #Time complexity: O(N)
+    #Space complexity: O(N)
     def insert(self, key, item):
-        #hash function by division
+        #hash function using modulus
         #bucket is being used as the index number for the table that contains
-        #the 40 empty arrays so the function is using the division method
+        #the 40 empty arrays so the function is using the modulus method
         bucket = int(key) % len(self.table)
         #index aka the bucket_list number is assigned from the bucket variable
         #which contains the hash function that deterens where the item will go
         bucket_list = self.table[bucket]
-        #insert the item at the end of the bucket list
+
 
         key_value = [key, item]
 
@@ -30,13 +32,18 @@ class Hashtable:
                 key_value[1] = item
                 return True
 
-
+        # insert the item at the end of the bucket list
         bucket_list.append(key_value)
         return True
         # Searches for an item with matching key in the hash table.
         # Returns the item if found, or None if not found.
 
-    #O(N)
+    # Time complexity: O(N)
+    # Space complexity: O(1)
+    """The average time complexity would be constant time but because out chaining and the possibility of a bucket having 
+     more than
+     than one key it's O(N)"""
+    # Function gets the value from the key
     def search(self, key):
         # get the bucket list where this key would be.
         bucket = int(key) % len(self.table)
@@ -52,9 +59,11 @@ class Hashtable:
             # the key is not found.
             return None
 
-        # Removes an item with matching key from the hash table.
 
-    #O(N)
+
+    #Time complexity: O(N)
+    #Space complexity: O(N)
+    # Removes an item with matching key from the hash table.
     def remove(self, key):
         # get the bucket list where this item will be removed from.
         bucket = int(key) % len(self.table)

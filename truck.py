@@ -3,6 +3,8 @@ from distances import *
 from algo import *
 
 #creating the truck class
+#Time complexity: O(1)
+#Space Complexity: O(1)
 class Truck:
     def __init__(self,truckId, departure, address, mileage, packages):
         self.truckId = truckId
@@ -14,7 +16,7 @@ class Truck:
     def __str__(self):
         return "%s, %s, %s, %s, %s" % (self.truckId, self.departure, self.address, self.mileage, self.packages)
 
-#creating instances of trucks 1 two and three
+#Creating instances of trucks one, two, and three
 truck1 = Truck(1, datetime.timedelta(hours=8), 'HUB', 0.0, [14,15,16,34,17,19,1,4,13,5,7,8,10,11,12])
 truck2 = Truck(2, datetime.timedelta(hours=8), 'HUB', 0.0, [3,18,20,21,22,23,24,27,29,30,31,32,33])
 truck3 = Truck(3, datetime.timedelta(hours=9, minutes = 17), 'HUB', 0.0, [6,25,28,35,36,37,38,39,40,26,2,9])
@@ -33,6 +35,8 @@ truck3 = Truck(3, datetime.timedelta(hours=9, minutes = 17), 'HUB', 0.0, [6,25,2
 #Function to return the distance between two addresses
 #a and b in the parameter represent the vertex numbers
 #and will be passed into the function to find the distance
+#Time complexity: O(1)
+#Space Complexity: O(1)
 def getDistance(a, b):
     distance = g.edge_weights[(vertex[a], vertex[b])]
     return distance
@@ -56,6 +60,8 @@ def minDistanceFrom(fromAddress, toAddress):
 #(minDistanceFrom(5))
 
 #function to deliver packages in a truck
+#Time complexity: O(N)
+#Space Complexity: O(N)
 def truckDeliverPakcages(truck):
     truckTime = truck.departure
     for x in truck.packages:
@@ -66,6 +72,9 @@ def truckDeliverPakcages(truck):
         truckTime = truckTime + datetime.timedelta(hours = d/18)
         stop.deliveryTime = truckTime
         stop.departureTime = truck.departure
+        """if truckTime >= datetime.timedelta(hours = 10, minutes = 20):
+            packageNine = packHash.search(9)
+            packageNine.address = """
 
 
     #loop truck package addresses and call minDistanceFrom(fromAddress, truckPackages)

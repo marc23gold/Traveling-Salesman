@@ -3,33 +3,11 @@ from package import *
 from readcsv import *
 
 
-addressList = loadAddresses('address.csv')
-
-#dictionary that will have index as the key and address as the thing
-vertexToAddressDictionary = {}
-
-#assigns a key with value of integer zero to equal HUB
-vertexToAddressDictionary[0] = addressList[0][1]
-
-#O(1)
-for x in range(1,27):
-        vertexToAddressDictionary[x] = addressList[x][1]
-
-addressToVertexDictionary = {}
-addressToVertexDictionary[addressList[0][1]] = 0
-
-#O(1)
-for x in range(27):
-        addressToVertexDictionary[addressList[x][1]] = x
-#print(addressToVertexDictionary)
-
-
-package = packHash.search(20)
-packageString = package.address
-#print(addressToVertexDictionary[packageString])
 
 
 """Uses the nearest neighbor algorithm to sort the packages already located in the truck"""
+#Time complexity: O(N^2)
+#Space Complexity: O(N)
 def algo (truck):
         #this array will hold the sorted address values that will later be turned back into the package number
         newarray = []
@@ -52,12 +30,15 @@ def algo (truck):
                                 if packages in newarray:
                                         continue
 
+                                #assigning the searched packages values from the HashTable instance to package
                                 package = packHash.search(packages)
 
-
+                                #calling the getDistance to function to get the distance between the next package and current package
                                 dist = getDistanceTo(nextToAddress, package.address)
 
+                                # assigning n with 1 with the package is in the truck and the deadline is not EOD and not already in the sorted list
                                 n = sum([1 for p in truck.packages if packHash.search(p).deadline != "EOD" and p not in newarray])
+                                #skips the package if it is n and the package deadline is EOD
                                 if n and package.deadline == "EOD":
                                     continue
 
@@ -68,7 +49,36 @@ def algo (truck):
                                         min = dist
                                         nextFromAddress = packages
                                         nextBestAddress = package.address
-
+                        #adds the package to the sorted list
                         newarray.append(nextFromAddress)
+                        #the next address to go to is assigned with the value of the next Best Address
                         nextToAddress = nextBestAddress
+        #return the sorted list of addresses that optimizes for mileage and package deadlines
         return newarray
+
+
+
+addressList = loadAddresses('address.csv')
+
+#dictionary that will have index as the key and address as the thing
+vertexToAddressDictionary = {}
+
+#assigns a key with value of integer zero to equal HUB
+vertexToAddressDictionary[0] = addressList[0][1]
+
+#populates the dictionary with values
+for x in range(1,27):
+        vertexToAddressDictionary[x] = addressList[x][1]
+
+addressToVertexDictionary = {}
+addressToVertexDictionary[addressList[0][1]] = 0
+
+#O(1)
+for x in range(27):
+        addressToVertexDictionary[addressList[x][1]] = x
+#print(addressToVertexDictionary)
+
+
+package = packHash.search(20)
+packageString = package.address
+#print(addressToVertexDictionary[packageString])
