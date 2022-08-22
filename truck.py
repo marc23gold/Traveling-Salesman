@@ -72,12 +72,7 @@ def truckDeliverPakcages(truck):
         truckTime = truckTime + datetime.timedelta(hours = d/18)
         stop.deliveryTime = truckTime
         stop.departureTime = truck.departure
-        #if the time is greater or equal to 10:20 then the package id on package nine will be corrected
-        if truckTime >= datetime.timedelta(hours = 10, minutes = 20):
-            packageNine = packHash.search(9)
-            packageNine.address = "410 S State St"
-            packageNine.zip = "84103"
-            packageNine.notes = "Address corrected"
+
 
 
 
