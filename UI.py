@@ -29,8 +29,8 @@ def showAllPackagesWithGivenDeadlineTime():
 
         print(allPacks)
 
-    total = (truck1.mileage + truck2.mileage + truck3.mileage)
-    print("\nThe total milage is: ",total)
+    #total = (truck1.mileage + truck2.mileage + truck3.mileage)
+    #print("\nThe total milage is: ",total)
 
 
 
@@ -63,8 +63,8 @@ def startEnd():
 
         print(allPacks)
 
-    total = (truck1.mileage + truck2.mileage + truck3.mileage)
-    print("\nThe total milage is: ",total)
+    #total = (truck1.mileage + truck2.mileage + truck3.mileage)
+    #print("\nThe total milage is: ",total)
 
 
 

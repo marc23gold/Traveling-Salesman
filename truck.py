@@ -17,22 +17,13 @@ class Truck:
         return "%s, %s, %s, %s, %s" % (self.truckId, self.departure, self.address, self.mileage, self.packages)
 
 #Creating instances of trucks one, two, and three
-truck1 = Truck(1, datetime.timedelta(hours=8), 'HUB', 0.0, [14,15,16,34,17,19,1,4,13,5,7,8,10,11,12])
-truck2 = Truck(2, datetime.timedelta(hours=8), 'HUB', 0.0, [3,18,20,21,22,23,24,27,29,30,31,32,33])
-truck3 = Truck(3, datetime.timedelta(hours=9, minutes = 17), 'HUB', 0.0, [6,25,28,35,36,37,38,39,40,26,2,9])
+truck1 = Truck(1, datetime.timedelta(hours=8), 'HUB', 0.0, [13,39,14,15,34,16,19,20,21,1,30,8,40,4])
+truck2 = Truck(2, datetime.timedelta(hours=8), 'HUB', 0.0, [37,38,5,3,18,36,2,33,7,29])
+truck3 = Truck(3, datetime.timedelta(hours=9, minutes = 34), 'HUB', 0.0, [6,25,26,31,32,28,10,11,12,17,22,23,24,27,35,9])
 
 
 
-#checks packages from the array and gives what is the next destination
-
-
-
-#check and sort
-#truck?.packages
-#def checkPackages(packagelist):
-
-
-#Function to return the distance between two addresses
+#Function to return the distance between two addresses if the graph data structure were used, which it is not.
 #a and b in the parameter represent the vertex numbers
 #and will be passed into the function to find the distance
 #Time complexity: O(1)
@@ -41,8 +32,8 @@ def getDistance(a, b):
     distance = g.edge_weights[(vertex[a], vertex[b])]
     return distance
 
-    #function to find min distance/address:
-    """"inputs need to be the fromAddress or the address the truck is currently at
+#function to find min distance/address if vertexes are used to find distance which they are not.
+""""inputs need to be the fromAddress or the address the truck is currently at
     to the address that is listed on the packages next in the list"""
 def minDistanceFrom(fromAddress, toAddress):
     addresslist = []
@@ -57,7 +48,7 @@ def minDistanceFrom(fromAddress, toAddress):
         return alright
 
 
-#(minDistanceFrom(5))
+
 
 #function to deliver packages in a truck
 #Time complexity: O(N)
@@ -81,21 +72,25 @@ def truckDeliverPakcages(truck):
         truckTime = truckTime + datetime.timedelta(hours = d/18)
         stop.deliveryTime = truckTime
         stop.departureTime = truck.departure
-        """if truckTime >= datetime.timedelta(hours = 10, minutes = 20):
+        #if the time is greater or equal to 10:20 then the package id on package nine will be corrected
+        if truckTime >= datetime.timedelta(hours = 10, minutes = 20):
             packageNine = packHash.search(9)
-            packageNine.address = """
+            packageNine.address = "410 S State St"
+            packageNine.zip = "84103"
+            packageNine.notes = "Address corrected"
 
 
 
 
 
 
-#truckSortPackage(truck1)
+#sorts the packages in the trucks using the nearest neighbor alogrithm to the a more optimal solution
 truck1.packages = algo(truck1)
 truck2.packages = algo(truck2)
 truck3.packages = algo(truck3)
 
-#delivering packages
+
+#delivering packages and keeping track of changing mileage and time
 truckDeliverPakcages(truck1)
 truckDeliverPakcages(truck2)
 truckDeliverPakcages(truck3)

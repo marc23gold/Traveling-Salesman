@@ -6,6 +6,7 @@ from readcsv import *
 
 
 """Uses the nearest neighbor algorithm to sort the packages already located in the truck"""
+#checks packages from the list and gives what is the next package and destination
 #Time complexity: O(N^2)
 #Space Complexity: O(N)
 def algo (truck):
@@ -57,7 +58,7 @@ def algo (truck):
         return newarray
 
 
-
+"""This is all for an alternative where the graph data structure were to be used"""
 addressList = loadAddresses('address.csv')
 
 #dictionary that will have index as the key and address as the thing
