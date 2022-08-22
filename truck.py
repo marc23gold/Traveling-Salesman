@@ -62,6 +62,15 @@ def minDistanceFrom(fromAddress, toAddress):
 #function to deliver packages in a truck
 #Time complexity: O(N)
 #Space Complexity: O(N)
+# loop truck package addresses and call getDistanceTo(fromAddress, stopAddress)
+ #for all the addresses not visted yet
+    #keep track of miles and time delivered
+    #update delivery status and time delivered in Hash Table for the package delivered
+    #and keep up with the total mileage and delivery times.
+    """keep track of time by using:
+        timeToDeliver(h) = distance(miles)/18(mph) where 18 mph average Truck speed
+        time_obj = datetime.timedelta(hours=int(h), minutes=int(m), seconds=int(s)).
+        time_obj could be cumulated to keep track of time"""
 def truckDeliverPakcages(truck):
     truckTime = truck.departure
     for x in truck.packages:
@@ -77,15 +86,8 @@ def truckDeliverPakcages(truck):
             packageNine.address = """
 
 
-    #loop truck package addresses and call minDistanceFrom(fromAddress, truckPackages)
-    #for all the addresses not visted yet
-    #keep track of miles and time delivered
-    #update delivery status and time delivered in Hash Table for the package delivered
-    #and keep up with the total mileage and delivery times.
-    """keep track of time by using:
-        timeToDeliver(h) = distance(miles)/18(mph) where 18 mph average Truck speed
-        time_obj = datetime.timedelta(hours=int(h), minutes=int(m), seconds=int(s)).
-        time_obj could be cumulated to keep track of time"""
+
+
 
 
 #truckSortPackage(truck1)

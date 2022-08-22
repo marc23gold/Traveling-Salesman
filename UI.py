@@ -49,21 +49,24 @@ def startEnd():
         allPacks = packHash.search(x)
         if allPacks.deliveryTime == None:
             pass
-        elif allPacks.deliveryTime >= startUserTime and allPacks.deliveryTime <= endUserTime:
+        elif allPacks.deliveryTime < endUserTime :
             allPacks.status = "Delivered"
 
-        elif  allPacks.departureTime < startUserTime:
-            allPacks.status = "At the Hub"
-            allPacks.deliveryTime = None
-        else:
+        elif (allPacks.deliveryTime > endUserTime) and allPacks.departureTime < startUserTime:
             allPacks.status = "In Route"
-            allPacks.deliveryTime = None
+            #allPacks.deliveryTime = None
+        else:
+            allPacks.status = "At the Hub"
+            #allPacks.deliveryTime = None
+
 
 
         print(allPacks)
 
     total = (truck1.mileage + truck2.mileage + truck3.mileage)
     print("\nThe total milage is: ",total)
+
+
 
 def showIndividualPackages():
     user = input("Put in the hour you want: ")
